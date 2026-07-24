@@ -19,3 +19,9 @@ int InitClass(Class *c);
 void DestroyClass(Class *c);
 
 int GetLength(Class *c);
+
+Student *SearchStudent(Class *c, int id);
+
+int AddStudent(Class *c, Student s, int position);
+
+int DeleteStudent(Class *c, Student *s);
