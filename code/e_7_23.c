@@ -54,3 +54,15 @@ int DeleteStudent(Class *c, Student *s){
     c->length--;
     return OK;
 }
+
+//显示所有学生
+void ShowAllStudents(Class *c){
+    for(int i = 0; i < c->length; i++){
+        ShowStudent((c->students) + i);
+    }
+}
+
+//显示单个学生信息
+void ShowStudent(Student *s){
+    printf("ID: %d, 名字: %s\n", s->id, s->name);
+}

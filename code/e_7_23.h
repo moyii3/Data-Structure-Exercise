@@ -25,3 +25,7 @@ Student *SearchStudent(Class *c, int id);
 int AddStudent(Class *c, Student s, int position);
 
 int DeleteStudent(Class *c, Student *s);
+
+void ShowStudent(Student *s);
+
+void ShowAllStudents(Class *c);

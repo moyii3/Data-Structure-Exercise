@@ -1,9 +1,9 @@
 #include "whole.h"
 
-extern int menu();
 
 int main(){
-    menu();
+    system("cls");
+    Main_menu();
     printf("Hello, World!\n");
     return 0;
 }
