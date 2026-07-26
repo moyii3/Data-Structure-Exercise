@@ -131,7 +131,11 @@ int LinkList_menu(){
         printf("4. 获取链表长度\n");
         printf("5. 检查链表是否为空\n");
         printf("6. 显示链表\n");
-        printf("7. 测试链表功能\n");
+        printf("7. 通过位置查找节点\n");
+        printf("8. 通过值查找节点\n");
+        printf("9. 插入节点\n");
+        printf("10. 删除节点\n");
+        printf("11. 加入测试节点\n");
         printf("0. 退出\n");
         scanf("%d", &choice);
         switch(choice){
@@ -174,7 +178,54 @@ int LinkList_menu(){
                 PressAnyKey();
                 break;
             case 7:
+                printf("输入要查找的节点位置: ");
+                int pos;
+                scanf("%d", &pos);
+                LinkList nodeByPos = searchListByLocation(L, pos);
+                if(nodeByPos != NULL && nodeByPos != L){
+                    printf("找到节点: %d\n", nodeByPos->data);
+                } else {
+                    printf("未找到节点!\n");
+                }
+                PressAnyKey();
+                break;
+            case 8:
+                printf("输入要查找的节点值: ");
+                int value;
+                scanf("%d", &value);
+                LinkList nodeByValue = searchListByValue(L, value);
+                if(nodeByValue != NULL){
+                    printf("找到节点: %d\n", nodeByValue->data);
+                } else {
+                    printf("未找到节点!\n");
+                }
+                PressAnyKey();
+                break;
+            case 9:
+                printf("输入要插入的节点位置和值: ");
+                int insertPos, insertValue;
+                scanf("%d %d", &insertPos, &insertValue);
+                if(insertList(L, insertPos, insertValue) == OK){
+                    printf("节点插入成功!\n");
+                } else {
+                    printf("节点插入失败!\n");
+                }
+                PressAnyKey();
+                break;
+            case 10:
+                printf("输入要删除的节点位置: ");
+                int deletePos;
+                scanf("%d", &deletePos);
+                if(deleteList(L, deletePos) == OK){
+                    printf("节点删除成功!\n");
+                } else {
+                    printf("节点删除失败!\n");
+                }
+                PressAnyKey();
+                break;
+            case 11:
                 Test(L);
+                printf("测试节点已加入!\n");
                 PressAnyKey();
                 break;
             case 0:

@@ -84,3 +84,50 @@ void ShowList(LinkList L){
     }
     printf("\n");
 }
+
+LinkList searchListByLocation(LinkList L, int i){
+    LinkList p = L;
+    int j = 0;
+    while(p && j < i){
+        p = p->next;
+        j++;
+    }
+    if(!p || j > i){
+        return NULL;
+    }
+    return p;
+}
+
+LinkList searchListByValue(LinkList L, int value){
+    LinkList p = L->next;
+    while(p && p->data != value){
+        p = p->next;
+    }
+    return p;
+}
+
+int insertList(LinkList L, int i, int value){
+    LinkList p = searchListByLocation(L, i - 1);
+    if(!p){
+        return ERROR;
+    }
+    LinkList newNode = (LinkList)malloc(sizeof(LNode));
+    if(!newNode){
+        return ERROR;
+    }
+    newNode->data = value;
+    newNode->next = p->next;
+    p->next = newNode;
+    return OK;
+}
+
+int deleteList(LinkList L, int i){
+    LinkList p = searchListByLocation(L, i - 1);
+    if(!p){
+        return ERROR;
+    }
+    LinkList q = p->next;
+    p->next = q->next;
+    free(q);
+    return OK;
+}
