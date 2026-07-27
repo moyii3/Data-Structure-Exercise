@@ -136,6 +136,8 @@ int LinkList_menu(){
         printf("9. 插入节点\n");
         printf("10. 删除节点\n");
         printf("11. 加入测试节点\n");
+        printf("12. 头插法建立链表\n");
+        printf("13. 尾插法建立链表\n");
         printf("0. 退出\n");
         scanf("%d", &choice);
         switch(choice){
@@ -227,6 +229,12 @@ int LinkList_menu(){
                 Test(L);
                 printf("测试节点已加入!\n");
                 PressAnyKey();
+                break;
+            case 12:
+                createListHead(&L,5);
+                break;
+            case 13:
+                createListR(&L,5);
                 break;
             case 0:
                 break;

@@ -4,7 +4,7 @@ int Test(LinkList L){
     if(!L){
         return ERROR;
     }       
-    L->data = 0; // è®¾ç½®å¤´ç»“ç‚¹æ•°æ®ä¸º0
+    L->data = 0; // ÉèÖÃÍ·½áµãÊı¾İÎª0
     LinkList q = L;
     for(int i = 1; i <= 5; i++){
         LinkList p = (LinkList)malloc(sizeof(LNode));
@@ -13,8 +13,8 @@ int Test(LinkList L){
         }
         p->data = i;
         p->next = NULL;
-        q->next = p; // å°†æ–°èŠ‚ç‚¹æ’å…¥åˆ°é“¾è¡¨æœ«å°¾
-        q = p; // æ›´æ–°å°¾æŒ‡é’ˆ
+        q->next = p; // ½«ĞÂ½Úµã²åÈëµ½Á´±íÄ©Î²
+        q = p; // ¸üĞÂÎ²Ö¸Õë
     }
     return OK;
 }
@@ -130,4 +130,33 @@ int deleteList(LinkList L, int i){
     p->next = q->next;
     free(q);
     return OK;
+}
+// Í·²å·¨´´½¨Á´±í
+void createListHead(LinkList *L, int n){
+    *L = (LinkList)malloc(sizeof(LNode));
+    (*L)->next = NULL;
+    int i;
+    for(i = n;i > 0; i--){
+        LinkList p = (LinkList)malloc(sizeof(LNode));
+        printf("ÊäÈëµÚ%d¸ö½ÚµãµÄÖµ: ", i);
+        scanf("%d", &p->data);
+        p->next = (*L)->next;
+        (*L)->next = p;
+    }
+}
+
+//Î²²å·¨
+void createListR(LinkList *L, int n){
+    *L = (LinkList)malloc(sizeof(LNode));
+    (*L)->next = NULL;
+    int i;
+    LinkList r = *L;
+    for(i = 0; i < n; i++){
+        LinkList p = (LinkList)malloc(sizeof(LNode));
+        printf("ÊäÈëµÚ%d¸ö½ÚµãµÄÖµ: ", i + 1);
+        scanf("%d", &p->data);
+        r->next = p;
+        p->next = NULL;
+        r = p;
+    }
 }

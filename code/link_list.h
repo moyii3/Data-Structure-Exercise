@@ -23,4 +23,8 @@ int insertList(LinkList L, int i, int value);
 
 int deleteList(LinkList L, int i);
 
+void createListHead(LinkList *L, int n);//头插法创建链表
+
+void createListR(LinkList *L, int n);//尾插法
+
 int Test(LinkList L);
