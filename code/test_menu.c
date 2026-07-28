@@ -12,6 +12,7 @@ int Main_menu(){
         system("cls");
         printf("1. 顺序表操作\n");
         printf("2. 链表操作\n");
+        printf("3. 双链表\n");
         printf("0. 退出\n");
         scanf("%d", &choice);
         switch(choice){
@@ -20,6 +21,9 @@ int Main_menu(){
                 break;
             case 2:
                 LinkList_menu();
+                break;
+            case 3:
+                DuList_menu();
                 break;
             case 0:
                 break;
@@ -246,4 +250,36 @@ int LinkList_menu(){
     }while(choice != 0);
 
     return 0;
+}
+
+int DuList_menu(){
+    int choice;
+    duLinkList D;
+    do{
+        system("cls");
+        printf("1.建立双向链表\n");
+        printf("2.显示双向链表\n");
+        printf("1.建立双向链表\n");
+        printf("1.建立双向链表\n");
+        printf("0.退出\n");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1:
+            CreateDuList(&D, 5);
+            if(D) printf("创建成功！\n");
+            else printf("创建失败\n");
+            PressAnyKey();
+            break;
+            case 2:
+            ShowDuList(D);
+            PressAnyKey();
+            break;
+            case 0:
+            break;
+            default:
+            printf("选择错误，请重新选择\n");
+            PressAnyKey();
+        }
+    }while(choice != 0);
+    return OK;
 }

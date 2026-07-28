@@ -5,5 +5,6 @@
 #include "e_7_23.h"
 #include "link_list.h"
 #include "test_menu.h"
+#include "duList.h"
 
 void PressAnyKey();
