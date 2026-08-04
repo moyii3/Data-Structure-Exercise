@@ -259,26 +259,52 @@ int DuList_menu(){
         system("cls");
         printf("1.建立双向链表\n");
         printf("2.显示双向链表\n");
-        printf("1.建立双向链表\n");
-        printf("1.建立双向链表\n");
+        printf("3.双链表节点查找\n");
+        printf("4.双链表节点插入\n");
+        printf("5.双链表节点删除\n");
         printf("0.退出\n");
         scanf("%d", &choice);
         switch(choice){
             case 1:
-            CreateDuList(&D, 5);
-            if(D) printf("创建成功！\n");
-            else printf("创建失败\n");
-            PressAnyKey();
-            break;
+                CreateDuList(&D, 5);
+                if(D) printf("创建成功！\n");
+                else printf("创建失败\n");
+                PressAnyKey();
+                break;
             case 2:
-            ShowDuList(D);
-            PressAnyKey();
-            break;
+                ShowDuList(D);
+                PressAnyKey();
+                break;
+            case 3:
+                printf("请输入节点位置：");
+                int position;
+                scanf("%d", &position);
+                duLinkList p = searchDuListByLocation(D, position);
+                if(!p || p == D) printf("未找到节点！\n");
+                else printf("找到节点%d,数据为：%d", position, p->data);
+                PressAnyKey();
+                break;
+            case 4:
+                printf("请输入插入节点位置及数据：");
+                int insert_pos,value;
+                scanf("%d %d", &insert_pos, &value);
+                if(insertDuListNode(D, insert_pos, value) == OK) printf("节点插入成功！\n");
+                else printf("失败！\n");
+                PressAnyKey();
+                break;
+            case 5:
+                printf("请输入删除节点位置：");
+                int delete_pos;
+                scanf("%d", &delete_pos);
+                if(deleteDulistNode(D, delete_pos) == OK) printf("节点删除成功！\n");
+                else printf("失败！\n");
+                PressAnyKey();
+                break;
             case 0:
-            break;
+                break;
             default:
-            printf("选择错误，请重新选择\n");
-            PressAnyKey();
+                printf("选择错误，请重新选择\n");
+                PressAnyKey();
         }
     }while(choice != 0);
     return OK;
