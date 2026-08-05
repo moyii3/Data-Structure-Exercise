@@ -71,6 +71,33 @@ int deleteDulistNode(duLinkList D, int i){
     return OK;
 }
 
-void unionDuList(duLinkList *a, duLinkList b){
-    //todo
+int GetDLEN(duLinkList D){
+    if(!D) return 0;
+    int len = 0;
+    while(D->next){
+        D = D->next;
+        len++;
+    }
+    return len;
+}
+
+//传参为首节点地址
+duLinkList unionDuList(duLinkList a, duLinkList b){
+    //递归
+    if(!a) return b;
+    else if(!b) return a;
+    else if(a->data < b->data){
+        a->next = unionDuList(a->next, b);
+        a->next->prior = a;
+        return a;
+    }else{
+        b->next = unionDuList(a, b->next);
+        b->next->prior = b;
+        return b;
+    }
+}
+
+//传参为首节点地址而非虚拟头节点
+duLinkList sortDuList(duLinkList D){
+    //递归
 }

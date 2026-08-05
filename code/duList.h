@@ -14,4 +14,8 @@ int insertDuListNode(duLinkList D, int i, int value);
 
 int deleteDulistNode(duLinkList D, int i);
 
-void unionDuList(duLinkList *a, duLinkList b);
+int GetDLEN(duLinkList D);//获取链表长（不记头结点
+
+duLinkList unionDuList(duLinkList a, duLinkList b);//合并两个非递减双链表
+
+duLinkList sortDuList(duLinkList D);//排序算法

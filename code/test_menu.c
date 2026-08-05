@@ -254,7 +254,8 @@ int LinkList_menu(){
 
 int DuList_menu(){
     int choice;
-    duLinkList D;
+    duLinkList D1;
+    duLinkList D2;
     do{
         system("cls");
         printf("1.建立双向链表\n");
@@ -262,25 +263,26 @@ int DuList_menu(){
         printf("3.双链表节点查找\n");
         printf("4.双链表节点插入\n");
         printf("5.双链表节点删除\n");
+        printf("6.两个非递减双链表合并\n");
         printf("0.退出\n");
         scanf("%d", &choice);
         switch(choice){
             case 1:
-                CreateDuList(&D, 5);
-                if(D) printf("创建成功！\n");
+                CreateDuList(&D1, 5);
+                if(D1) printf("创建成功！\n");
                 else printf("创建失败\n");
                 PressAnyKey();
                 break;
             case 2:
-                ShowDuList(D);
+                ShowDuList(D1);
                 PressAnyKey();
                 break;
             case 3:
                 printf("请输入节点位置：");
                 int position;
                 scanf("%d", &position);
-                duLinkList p = searchDuListByLocation(D, position);
-                if(!p || p == D) printf("未找到节点！\n");
+                duLinkList p = searchDuListByLocation(D1, position);
+                if(!p || p == D1) printf("未找到节点！\n");
                 else printf("找到节点%d,数据为：%d", position, p->data);
                 PressAnyKey();
                 break;
@@ -288,7 +290,7 @@ int DuList_menu(){
                 printf("请输入插入节点位置及数据：");
                 int insert_pos,value;
                 scanf("%d %d", &insert_pos, &value);
-                if(insertDuListNode(D, insert_pos, value) == OK) printf("节点插入成功！\n");
+                if(insertDuListNode(D1, insert_pos, value) == OK) printf("节点插入成功！\n");
                 else printf("失败！\n");
                 PressAnyKey();
                 break;
@@ -296,8 +298,22 @@ int DuList_menu(){
                 printf("请输入删除节点位置：");
                 int delete_pos;
                 scanf("%d", &delete_pos);
-                if(deleteDulistNode(D, delete_pos) == OK) printf("节点删除成功！\n");
+                if(deleteDulistNode(D1, delete_pos) == OK) printf("节点删除成功！\n");
                 else printf("失败！\n");
+                PressAnyKey();
+                break;
+            case 6:
+                printf("创建第二链表\n");
+                CreateDuList(&D2, 6);
+                if(D2) printf("创建成功！\n");
+                else printf("创建失败\n");
+                /*D1->next = sortDuList(D1->next);
+                D1->next->prior = D1;
+                D2->next = sortDuList(D2->next);
+                D2->next->prior = D2;*/
+                D1->next = unionDuList(D1->next, D2->next);
+                printf("合并成功");
+                ShowDuList(D1);
                 PressAnyKey();
                 break;
             case 0:
