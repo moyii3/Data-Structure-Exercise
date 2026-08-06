@@ -160,3 +160,12 @@ void createListR(LinkList *L, int n){
         r = p;
     }
 }
+
+//递归
+LinkList reverseList(LinkList L){
+    if(L == NULL || L->next == NULL) return L;
+    LinkList newHead = reverseList(L->next);
+    L->next->next = L;//假设L后若干节点已经反转（L->a<-b<-c),使a指向L
+    L->next = NULL;//防止原首节点（新的尾节点）仍然指向a，形成环L-><-a<-b....
+    return newHead;
+}

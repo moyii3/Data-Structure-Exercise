@@ -27,4 +27,6 @@ void createListHead(LinkList *L, int n);//头插法创建链表
 
 void createListR(LinkList *L, int n);//尾插法
 
+LinkList reverseList(LinkList L);//反转链表
+
 int Test(LinkList L);

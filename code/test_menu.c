@@ -142,6 +142,7 @@ int LinkList_menu(){
         printf("11. 加入测试节点\n");
         printf("12. 头插法建立链表\n");
         printf("13. 尾插法建立链表\n");
+        printf("14. 反转链表\n");
         printf("0. 退出\n");
         scanf("%d", &choice);
         switch(choice){
@@ -239,6 +240,9 @@ int LinkList_menu(){
                 break;
             case 13:
                 createListR(&L,5);
+                break;
+            case 14:
+                L->next = reverseList(L->next);
                 break;
             case 0:
                 break;
