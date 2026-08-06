@@ -268,6 +268,8 @@ int DuList_menu(){
         printf("4.双链表节点插入\n");
         printf("5.双链表节点删除\n");
         printf("6.两个非递减双链表合并\n");
+        printf("7.倒序输出双链表\n");
+        printf("8.迭代合并两个非递减双链表\n");
         printf("0.退出\n");
         scanf("%d", &choice);
         switch(choice){
@@ -307,6 +309,14 @@ int DuList_menu(){
                 PressAnyKey();
                 break;
             case 6:
+                printf("1.短链表\n2.长链表\n");
+                int choice2;
+                scanf("%d", &choice2);
+                if(choice2 == 1){
+                printf("第一链表\n");
+                CreateDuList(&D1, 5);
+                if(D1) printf("创建成功\n");
+                else printf("失败\n");
                 printf("创建第二链表\n");
                 CreateDuList(&D2, 6);
                 if(D2) printf("创建成功！\n");
@@ -316,8 +326,46 @@ int DuList_menu(){
                 D2->next = sortDuList(D2->next);
                 D2->next->prior = D2;*/
                 D1->next = unionDuList(D1->next, D2->next);
-                printf("合并成功");
+                printf("合并成功\n");
                 ShowDuList(D1);
+                }else{
+                    D1 = CreateLongDuList(D1);
+                    D2 = CreateLongDuList(D2);
+                    D1->next = unionDuList(D1->next, D2->next);
+                    printf("合并完成\n");
+                    ShowDuList(D1);
+                }
+                
+                PressAnyKey();
+                break;
+            case 7:
+                ShowReverseDuList(D1);
+                PressAnyKey();
+                break;
+            case 8:
+                printf("1.短链表\n2.长链表\n");
+                int choice3;
+                scanf("%d", &choice3);
+                if(choice3 == 1){
+                printf("第一链表\n");
+                CreateDuList(&D1, 5);
+                if(D1) printf("创建成功\n");
+                else printf("失败\n");
+                printf("创建第二链表\n");
+                CreateDuList(&D2, 6);
+                if(D2) printf("创建成功！\n");
+                else printf("创建失败\n");
+                D1->next = MergeDuList(D1->next, D2->next);
+                printf("合并成功\n");
+                ShowDuList(D1);
+                }else{
+                    D1 = CreateLongDuList(D1);
+                    D2 = CreateLongDuList(D2);
+                    D1->next = MergeDuList(D1->next, D2->next);
+                    printf("合并完成\n");
+                    ShowDuList(D1);
+                }
+                
                 PressAnyKey();
                 break;
             case 0:

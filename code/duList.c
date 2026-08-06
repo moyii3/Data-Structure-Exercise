@@ -28,6 +28,19 @@ int ShowDuList(duLinkList D){
     return OK;
 }
 
+int ShowReverseDuList(duLinkList D){
+    if(!D) return ERROR;
+    while(D->next){
+        D = D->next;
+    }
+    while(D->prior){
+        printf("%d ", D->data);
+        D = D->prior;
+    }
+    printf("\n");
+    return OK;
+}
+
 duLinkList searchDuListByLocation(duLinkList D, int i){
     duLinkList p = D;
     if(!p || i < 0) return NULL;
@@ -97,7 +110,49 @@ duLinkList unionDuList(duLinkList a, duLinkList b){
     }
 }
 
+duLinkList MergeDuList(duLinkList a, duLinkList b){
+    //迭代
+    if(!a) return b;
+    if(!b) return a;
+    duLinkList dummyHead = (duLinkList)malloc(sizeof(dulNode));
+    duLinkList p = dummyHead;
+    while(a && b){
+        if(a->data < b->data){
+            p->next = a;
+            a->prior = p;
+            a = a->next;
+            p = p->next;
+        }else{
+            p->next = b;
+            b->prior = p;
+            b = b->next;
+            p = p->next;
+        }
+    }
+    p->next = a ? a : b;
+    (a ? a : b)->prior = p;
+    return dummyHead->next;
+}
+
+duLinkList CreateLongDuList(duLinkList D){
+    D = (duLinkList)malloc(sizeof(dulNode));
+    D->prior = NULL;
+    D->next = NULL;
+    duLinkList r = D;
+    int i;
+    for(i = 0; i < 10000; i++){
+        duLinkList p = (duLinkList)malloc(sizeof(dulNode));
+        p->data = i;
+        p->prior = r;
+        r->next = p;
+        p->next = NULL;
+        r = r->next;
+    }
+    return D;
+}
+
 //传参为首节点地址而非虚拟头节点
 duLinkList sortDuList(duLinkList D){
     //递归
 }
+
