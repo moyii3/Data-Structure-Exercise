@@ -24,4 +24,4 @@ duLinkList MergeDuList(duLinkList a, duLinkList b);//迭代合并两个非递减双链表
 
 duLinkList sortDuList(duLinkList D);//排序算法
 
-duLinkList CreateLongDuList(duLinkList D);//自动生成一个含10000节点的双链表
+duLinkList CreateLongDuList(duLinkList D);//自动生成一个含10000结点的双链表

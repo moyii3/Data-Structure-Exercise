@@ -6,5 +6,6 @@
 #include "link_list.h"
 #include "test_menu.h"
 #include "duList.h"
+#include "biTree.h"
 
 void PressAnyKey();

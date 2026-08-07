@@ -13,6 +13,7 @@ int Main_menu(){
         printf("1. 顺序表操作\n");
         printf("2. 链表操作\n");
         printf("3. 双链表\n");
+        printf("4. 二叉树操作\n");
         printf("0. 退出\n");
         scanf("%d", &choice);
         switch(choice){
@@ -24,6 +25,9 @@ int Main_menu(){
                 break;
             case 3:
                 DuList_menu();
+                break;
+            case 4:
+                BiTree_menu();
                 break;
             case 0:
                 break;
@@ -264,10 +268,10 @@ int DuList_menu(){
         system("cls");
         printf("1.建立双向链表\n");
         printf("2.显示双向链表\n");
-        printf("3.双链表节点查找\n");
-        printf("4.双链表节点插入\n");
-        printf("5.双链表节点删除\n");
-        printf("6.两个非递减双链表合并\n");
+        printf("3.双链表结点查找\n");
+        printf("4.双链表结点插入\n");
+        printf("5.双链表结点删除\n");
+        printf("6.两个非递减双链表递归合并\n");
         printf("7.倒序输出双链表\n");
         printf("8.迭代合并两个非递减双链表\n");
         printf("0.退出\n");
@@ -284,27 +288,27 @@ int DuList_menu(){
                 PressAnyKey();
                 break;
             case 3:
-                printf("请输入节点位置：");
+                printf("请输入结点位置：");
                 int position;
                 scanf("%d", &position);
                 duLinkList p = searchDuListByLocation(D1, position);
-                if(!p || p == D1) printf("未找到节点！\n");
-                else printf("找到节点%d,数据为：%d", position, p->data);
+                if(!p || p == D1) printf("未找到结点！\n");
+                else printf("找到结点%d,数据为：%d", position, p->data);
                 PressAnyKey();
                 break;
             case 4:
-                printf("请输入插入节点位置及数据：");
+                printf("请输入插入结点位置及数据：");
                 int insert_pos,value;
                 scanf("%d %d", &insert_pos, &value);
-                if(insertDuListNode(D1, insert_pos, value) == OK) printf("节点插入成功！\n");
+                if(insertDuListNode(D1, insert_pos, value) == OK) printf("结点插入成功！\n");
                 else printf("失败！\n");
                 PressAnyKey();
                 break;
             case 5:
-                printf("请输入删除节点位置：");
+                printf("请输入删除结点位置：");
                 int delete_pos;
                 scanf("%d", &delete_pos);
-                if(deleteDulistNode(D1, delete_pos) == OK) printf("节点删除成功！\n");
+                if(deleteDulistNode(D1, delete_pos) == OK) printf("结点删除成功！\n");
                 else printf("失败！\n");
                 PressAnyKey();
                 break;
@@ -375,5 +379,40 @@ int DuList_menu(){
                 PressAnyKey();
         }
     }while(choice != 0);
+    return OK;
+}
+
+int BiTree_menu(){
+    int choice;
+    biTree B;
+    do{
+        system("cls");
+        printf("1.创建二叉树\n");
+        printf("2.先序遍历二叉树\n");
+        printf("1.\n");
+        printf("1.\n");
+        printf("0.退出\n");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1:
+                if((B = CreateBiTree(B))) printf("创建成功\n");
+                else printf("失败\n");
+                PressAnyKey();
+                break;
+            case 2:
+                PreOrderTraverse(B);
+                PressAnyKey();
+                break;
+            case 0:
+                break;
+            default:
+                printf("选择错误!\n");
+                PressAnyKey();
+            
+        }
+
+    }while(choice != 0);
+
+
     return OK;
 }
