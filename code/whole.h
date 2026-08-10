@@ -7,5 +7,6 @@
 #include "test_menu.h"
 #include "duList.h"
 #include "biTree.h"
+#include "stack.h"
 
 void PressAnyKey();

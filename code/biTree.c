@@ -14,9 +14,28 @@ biTree CreateBiTree(biTree B){
 }
 
 int PreOrderTraverse(biTree B){
-    if(!B) return OK;
+    if(!B) return ERROR;
     printf("%d ", B->data);
     PreOrderTraverse(B->lChild);
     PreOrderTraverse(B->rChild);
+    return OK;
+}
+
+int InOrderTraverse(biTree B){
+    if(!B) return ERROR;
+    stack S;
+    biTree p, q;
+    p = B;
+    InitStack(&S);
+    while(p || !IsEmptyStack(S)){
+        if(p){
+            Push(&S, p);
+            p = p->lChild;
+        }else{
+            Pop(&S, &q);
+            printf("%d ", q->data);
+            p = q->rChild;
+        }
+    }
     return OK;
 }

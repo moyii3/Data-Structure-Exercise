@@ -154,5 +154,6 @@ duLinkList CreateLongDuList(duLinkList D){
 //传参为首节点地址而非虚拟头节点
 duLinkList sortDuList(duLinkList D){
     //递归
+    return D;
 }
 
