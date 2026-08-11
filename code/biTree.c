@@ -39,3 +39,17 @@ int InOrderTraverse(biTree B){
     }
     return OK;
 }
+
+int LevelOrder(biTree B){
+    biTree queue[100];
+    int front = 0;
+    int rear = 0;
+    queue[rear++] = B;
+    while(front != rear){
+        biTree q = queue[front++];
+        printf("%d ", q->data);
+        if(q->lChild) queue[rear++] = q->lChild;
+        if(q->rChild) queue[rear++] = q->rChild;
+    }
+    return OK;
+}
