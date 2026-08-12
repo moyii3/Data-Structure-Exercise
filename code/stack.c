@@ -15,7 +15,10 @@ int Push(stack* s, biNode* b){
 }
 
 int Pop(stack* s, biTree* b){
-    if(!(*s)) return ERROR;
+    if(!(*s)) {
+        *b = NULL;
+        return ERROR;
+    }
     *b = (*s)->node;
     stack p = *s;
     *s = (*s)->next;

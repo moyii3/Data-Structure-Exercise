@@ -53,3 +53,23 @@ int LevelOrder(biTree B){
     }
     return OK;
 }
+
+int PostOrderTraverse(biTree B){
+    if(!B) return ERROR;
+    stack S1, S2;
+    biTree p;
+    p = B;
+    InitStack(&S1);
+    InitStack(&S2);
+    while(p){
+        Push(&S2, p);
+        if(p->lChild) Push(&S1, p->lChild);
+        if(p->rChild) Push(&S1, p->rChild);
+        Pop(&S1, &p);
+    }
+    while(!IsEmptyStack(S2)){
+        Pop(&S2, &p);
+        printf("%d ", p->data);
+    }
+    return OK;
+}

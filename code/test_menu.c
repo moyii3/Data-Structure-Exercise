@@ -387,10 +387,11 @@ int BiTree_menu(){
     biTree B;
     do{
         system("cls");
-        printf("1.创建二叉树\n");
+        printf("1.先根顺序创建二叉树\n");
         printf("2.先序遍历二叉树\n");
         printf("3.迭代法手动栈实现中序遍历二叉树\n");
         printf("4.层序遍历（简易队列版）\n");
+        printf("5.后序遍历（双栈迭代）\n");
         printf("0.退出\n");
         scanf("%d", &choice);
         switch(choice){
@@ -409,6 +410,10 @@ int BiTree_menu(){
                 break;
             case 4:
                 LevelOrder(B);
+                PressAnyKey();
+                break;
+            case 5:
+                PostOrderTraverse(B);
                 PressAnyKey();
                 break;
             case 0:
