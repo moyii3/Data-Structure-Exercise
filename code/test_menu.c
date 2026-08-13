@@ -9,7 +9,7 @@ void PressAnyKey(){
 int Main_menu(){
     int choice;
     do{
-        system("cls");
+        system("cls");//清屏
         printf("1. 顺序表操作\n");
         printf("2. 链表操作\n");
         printf("3. 双链表\n");
@@ -34,9 +34,9 @@ int Main_menu(){
             default:
                 printf("无效选择!\n");
                 PressAnyKey();
-        }
+        }//根据输入的选择调用相应菜单函数
         
-    }while(choice != 0);
+    }while(choice != 0);//循环选择
 
     return 0;
 }

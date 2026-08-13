@@ -95,6 +95,7 @@ int GetDLEN(duLinkList D){
 }
 
 //传参为首节点地址
+//从后往前合并，假设首结点后续结点已合并完成，比较两个首结点数据大小，小的作为合并后链表的首结点
 duLinkList unionDuList(duLinkList a, duLinkList b){
     //递归
     if(!a) return b;
@@ -110,6 +111,7 @@ duLinkList unionDuList(duLinkList a, duLinkList b){
     }
 }
 
+//设立一个虚拟头结点，依次遍历ab链表，将数据小的接到合并链表尾
 duLinkList MergeDuList(duLinkList a, duLinkList b){
     //迭代
     if(!a) return b;
